@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniela & Sebastian - Nuestro Matrimonio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Roboto'>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Custom styles for the Playfair Display font and background color */
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #e1dfdb;
+            color: #000000;
+            /* Black text color */
+        }
+
+        /* Ensure image covers full width and height of its container */
+        .full-width-image {
+            width: 100%;
+            height: 100vh;
+            /* Occupy full viewport height */
+            object-fit: cover;
+            /* Cover the entire area without distortion */
+            object-position: center;
+            /* Center the image */
+        }
+
+        /* Custom font sizes for names to ensure they apply correctly */
+        .first-name {
+            font-size: 75px;
+            height: 82px;
+        }
+
+        /* Animaciones de entrada para las secciones */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateX(0);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-right {
+            transform: translateX(80px);
+        }
+
+        .fade-in-left {
+            transform: translateX(-80px);
+        }
+
+        .fade-in-visible {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        .name-penafont {
+            font-size: 30px;
+        }
+
+        .name-ampersandfont {
+            font-size: 40px;
+        }
+
+        .name-sebastianfont {
+            font-size: 60px;
+        }
+
+        .name-gonzalesfont {
+            font-size: 30px;
+        }
+
+        /* Responsive font sizes for smaller screens */
+        @media (max-width: 768px) {
+            .first-name {
+                font-size: 40px;
+                height: 50px;
+            }
+
+            .name-penafont {
+                font-size: 20px;
+            }
+
+            .name-ampersandfont {
+                font-size: 30px;
+            }
+
+            .name-sebastianfont {
+                font-size: 40px;
+            }
+
+            .name-gonzalesfont {
+                font-size: 20px;
+            }
+
+            .message-text {
+                font-size: 16px;
+            }
+
+            .countdown-text {
+                font-size: 16px;
+            }
+
+            .our-wedding-title {
+                font-size: 36px;
+            }
+
+            .our-wedding-text {
+                font-size: 16px;
+            }
+        }
+
+        .relative {
+            position: relative;
+            /* Importante: establece el contexto de posicionamiento */
+        }
+
+        .absolute-overlap-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* --- NUEVOS ESTILOS PARA EL VIDEO DE FONDO --- */
+        #welcome-screen video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="text-black bg-[#e1dfdb] overflow-hidden">
+    <audio id="bg-audio" src="mp3/song.mp3" autoplay loop></audio>
+    <div id="welcome-screen" class="fixed top-0 left-0 w-full h-screen z-50 overflow-hidden">
+        <video autoplay loop muted playsinline>
+            <source src="images/v1.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+
+        <div
+            class="relative z-10 flex flex-col items-center justify-center h-full w-full bg-black/60 text-white text-center p-6">
+            <h1 id="welcome-message"
+                class="font-['Playfair_Display'] text-3xl md:text-5xl font-regular max-w-3xl leading-snug md:leading-tight">
+                Cargando...
+            </h1>
+            <button id="show-invitation-btn"
+                class="mt-10 bg-white text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-200 transition duration-300 shadow-lg">
+                Ver invitación
+            </button>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+
+        <section class="w-full h-screen overflow-hidden fade-in-section">
+            <img src="images/4.jpeg" alt="Foto de Daniela y Sebastian" class="full-width-image rounded-none">
+        </section>
+
+        <section
+            class="py-12 flex flex-col items-center justify-center text-center relative fade-in-section fade-in-left">
+            <div class="max-w-2xl text-left pr-24">
+                <div class="first-name uppercase">DANIELA</div>
+                <div class="name-penafont uppercase">PEÑA</div>
+            </div>
+
+            <div class="absolute-overlap-div name-penafont">
+                Y
+            </div>
+
+            <div class="max-w-2xl text-right pl-24">
+                <div class="first-name uppercase">SEBASTIAN</div>
+                <div class="name-gonzalesfont uppercase">GONZALES</div>
+            </div>
+        </section>
+
+        <section class="shadow-md pb-12 px-4 md:px-20 lg:px-40 text-center fade-in-section fade-in-right">
+            <p class="message-text text-[20px] mb-4 leading-relaxed rounded-lg">
+                Con gran alegría, nos complace anunciar que hemos decidido unir nuestras vidas en matrimonio.
+            </p>
+            <p class="message-text text-[20px] leading-relaxed rounded-lg">
+                Este día especial es el comienzo de un nuevo capítulo en nuestra historia, un capítulo que queremos
+                escribir
+                junto a ustedes, nuestros amigos y familiares más cercanos.
+            </p>
+        </section>
+
+        <section class="shadow-md w-full h-screen overflow-hidden fade-in-section">
+            <img src="images/5.jpeg" alt="Foto de Daniela y Sebastian" class="full-width-image rounded-none">
+        </section>
+
+        <section class="py-12 px-4 text-center bg-orange-100 bg-opacity-40 fade-in-section fade-in-right shadow-md">
+            <h2 class="text-[30px] font-bold mb-6 rounded-lg">20 Diciembre 2025</h2>
+            <div id="countdown"
+                class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 justify-center text-center rounded-lg max-w-xl mx-auto">
+                <div class="countdown-item p-4 bg-white bg-opacity-50 rounded-lg shadow-md">
+                    <div id="days" class="text-[40px] font-bold">0</div>
+                    <div class="countdown-text text-[20px]">Días</div>
+                </div>
+                <div class="countdown-item p-4 bg-white bg-opacity-50 rounded-lg shadow-md">
+                    <div id="hours" class="text-[40px] font-bold">0</div>
+                    <div class="countdown-text text-[20px]">Horas</div>
+                </div>
+                <div class="countdown-item p-4 bg-white bg-opacity-50 rounded-lg shadow-md">
+                    <div id="minutes" class="text-[40px] font-bold">0</div>
+                    <div class="countdown-text text-[20px]">Minutos</div>
+                </div>
+                <div class="countdown-item p-4 bg-white bg-opacity-50 rounded-lg shadow-md">
+                    <div id="seconds" class="text-[40px] font-bold">0</div>
+                    <div class="countdown-text text-[20px]">Segundos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendario de diciembre con el día 20 resaltado -->
+        <section class="py-12 px-4 text-center fade-in-section fade-in-left relative shadow-md">
+            <h2 class="text-[28px] font-bold mb-6 rounded-lg">Diciembre 2025</h2>
+            <div class="flex justify-center">
+                <div class="inline-block bg-white bg-opacity-80 rounded-xl shadow-lg p-4">
+                    <div class="grid grid-cols-7 gap-2 text-center">
+                        <div class="font-semibold text-gray-700">Dom</div>
+                        <div class="font-semibold text-gray-700">Lun</div>
+                        <div class="font-semibold text-gray-700">Mar</div>
+                        <div class="font-semibold text-gray-700">Mié</div>
+                        <div class="font-semibold text-gray-700">Jue</div>
+                        <div class="font-semibold text-gray-700">Vie</div>
+                        <div class="font-semibold text-gray-700">Sáb</div>
+                        <!-- Diciembre 2025 empieza en lunes, así que el primer día es lunes -->
+                        <div></div>
+                        <div class="text-gray-700">1</div>
+                        <div class="text-gray-700">2</div>
+                        <div class="text-gray-700">3</div>
+                        <div class="text-gray-700">4</div>
+                        <div class="text-gray-700">5</div>
+                        <div class="text-gray-700">6</div>
+                        <div class="text-gray-700">7</div>
+                        <div class="text-gray-700">8</div>
+                        <div class="text-gray-700">9</div>
+                        <div class="text-gray-700">10</div>
+                        <div class="text-gray-700">11</div>
+                        <div class="text-gray-700">12</div>
+                        <div class="text-gray-700">13</div>
+                        <div class="text-gray-700">14</div>
+                        <div class="text-gray-700">15</div>
+                        <div class="text-gray-700">16</div>
+                        <div class="text-gray-700">17</div>
+                        <div class="text-gray-700">18</div>
+                        <div class="text-gray-700">19</div>
+                        <div
+                            class="font-bold text-red-400 flex items-center justify-center mx-auto border-b-2 border-orange-500">
+                            20</div>
+                        <div class="text-gray-700">21</div>
+                        <div class="text-gray-700">22</div>
+                        <div class="text-gray-700">23</div>
+                        <div class="text-gray-700">24</div>
+                        <div class="text-gray-700">25</div>
+                        <div class="text-gray-700">26</div>
+                        <div class="text-gray-700">27</div>
+                        <div class="text-gray-700">28</div>
+                        <div class="text-gray-700">29</div>
+                        <div class="text-gray-700">30</div>
+                        <div class="text-gray-700">31</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pointer-events-none absolute left-0 top-0 w-full h-12 z-20"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0.08), transparent);"></div>
+        </section>
+        </section>
+
+
+        <section class="w-full h-screen overflow-hidden fade-in-section shadow-md">
+            <img src="images/7.jpeg" alt="Foto de Daniela y Sebastian Martincito" class="full-width-image rounded-none">
+        </section>
+        <section class="py-16 px-4 text-center fade-in-section fade-in-right shadow-md">
+            <h2 class="our-wedding-title text-[50px] font-bold uppercase mb-6 rounded-lg">NUESTRA BODA</h2>
+            <p class="our-wedding-text text-[20px] leading-relaxed rounded-lg">
+                Y después de 13 años, empieza el "para siempre" que tanto hemos soñado.
+            </p>
+        </section>
+
+        <section class="shadow-md py-16 px-4 text-center bg-orange-100 bg-opacity-40 fade-in-section fade-in-left">
+            <div class="flex justify-center mb-4">
+                <img src="images/church.svg" alt="icono iglesia" class="w-20 h-20 text-black" />
+            </div>
+            <h3 class="text-[30px] font-bold uppercase mb-2 rounded-lg">CEREMONIA</h3>
+            <p class="text-[20px] mb-2 rounded-lg">3:00pm</p>
+            <p class="text-[20px] mb-8 rounded-lg">Iglesia Catedral San Alfonso María De Ligorio</p>
+            <a href="https://maps.app.goo.gl/YmYDHCyXnazq1Ya1A" target="_blank"
+                class="inline-block bg-black text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition duration-300 shadow-lg">
+                Cómo llegar
+            </a>
+        </section>
+
+        <section class="shadow-md py-16 px-4 text-center fade-in-section fade-in-right">
+            <div class="flex justify-center mb-4">
+                <img src="images/brunch.svg" alt="icono brunch" class="w-20 h-20 text-black" />
+            </div>
+            <h3 class="text-[30px] font-bold uppercase mb-2 rounded-lg">BRUNCH</h3>
+            <p class="text-[20px] mb-2 rounded-lg">4:30pm</p>
+            <p class="text-[20px] mb-8 rounded-lg">Cafa luga</p>
+            <a href="https://maps.app.goo.gl/WiNowPbMdboujKzJ6" target="_blank"
+                class="inline-block bg-black text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition duration-300 shadow-lg">
+                Cómo llegar
+            </a>
+        </section>
+
+        <section class="shadow-md py-16 px-4 text-center bg-orange-100 bg-opacity-40 fade-in-section fade-in-left">
+            <div class="flex justify-center mb-4">
+                <img src="images/reception.svg" alt="icono recepción" class="w-20 h-20 text-black" />
+            </div>
+            <h3 class="text-[30px] font-bold uppercase mb-2 rounded-lg">RECEPCIÓN</h3>
+            <p class="text-[20px] mb-2 rounded-lg">6:00pm</p>
+            <p class="text-[20px] mb-8 rounded-lg">Cafa luga</p>
+            <a href="https://maps.app.goo.gl/WiNowPbMdboujKzJ6" target="_blank"
+                class="inline-block bg-black text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition duration-300 shadow-lg">
+                Cómo llegar
+            </a>
+        </section>
+
+        <section class="shadow-md py-16 px-4 text-center fade-in-section fade-in-right">
+            <div class="flex justify-center">
+                <img src="images/suitdress.svg" alt="icono suit and dress" class="w-40 h-40 text-black" />
+            </div>
+            <h3 class="text-[30px] font-bold uppercase mb-2 rounded-lg">CÓDIGO DE VESTIMENTA</h3>
+            <p class="text-[20px] mb-2 rounded-lg">Nuestra historia se viste de gala, ¡Tú también!</p>
+        </section>
+
+        <section class="shadow-md bg-orange-100 text-center fade-in-section relative">
+            <div class="carousel carousel-container">
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">01</div>
+                        <div class="num"></div>
+                        <img src="images/historia/10.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">02</div>
+                        <div class="num"></div>
+                        <img src="images/historia/11.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">03</div>
+                        <div class="num"></div>
+                        <img src="images/historia/12.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">04</div>
+                        <div class="num"></div>
+                        <img src="images/historia/13.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">05</div>
+                        <div class="num"></div>
+                        <img src="images/historia/14.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">06</div>
+                        <div class="num"></div>
+                        <img src="images/historia/15.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">07</div>
+                        <div class="num"></div>
+                        <img src="images/historia/16.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">08</div>
+                        <div class="num"></div>
+                        <img src="images/historia/17.png" />
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">09</div>
+                        <div class="num"></div>
+                        <img src="images/historia/18.png" />
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">10</div>
+                        <div class="num"></div>
+                        <img src="images/historia/19.png" />
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">11</div>
+                        <div class="num"></div>
+                        <img src="images/historia/20.png" />
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-box">
+                        <div class="title">12</div>
+                        <div class="num"></div>
+                        <img src="images/historia/21.png" />
+                    </div>
+                </div>
+            </div>
+
+            <svg style="display: none">
+                <symbol id="ico-instagram" viewBox="0 0 35 35">
+                    <circle opacity=".2" cx="17.5" cy="17.5" r="17" stroke="var(--fill)" fill="none"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M24.944 20.476c.028-.457.042-1.282.042-2.476s-.014-2.019-.042-2.476c-.056-1.09-.378-1.93-.965-2.517s-1.422-.91-2.503-.965C21.018 12.014 20.194 12 19 12s-2.019.014-2.476.042c-1.081.047-1.92.368-2.517.965s-.918 1.436-.965 2.518C13.014 15.98 13 16.805 13 18c0 1.194.014 2.019.042 2.476.047 1.09.368 1.93.965 2.517s1.436.91 2.518.965c.466.028 1.29.042 2.475.042 1.184 0 2.01-.014 2.476-.042 1.072-.047 1.906-.368 2.503-.965.597-.597.918-1.436.965-2.517ZM19 13.075h-1.427c-.186 0-.438.01-.755.029a11.61 11.61 0 0 0-.797.07c-.215.028-.401.08-.56.154-.26.102-.489.251-.685.447-.196.196-.35.425-.461.685-.056.15-.103.336-.14.56a7.843 7.843 0 0 0-.084.811 7.113 7.113 0 0 0-.014.741c.01.178.01.453 0 .826-.01.373-.01.573 0 .601.01.028.01.228 0 .601s-.01.648 0 .826c.01.177.014.424.014.74 0 .318.028.588.084.812l.14.56c.112.26.265.489.461.685.196.196.425.345.685.447.15.056.336.108.56.154.224.047.49.07.797.07.308 0 .56.01.755.028.196.019.471.019.826 0 .354-.019.554-.019.601 0 .047.019.242.019.587 0s.62-.019.826 0c.205.019.456.01.755-.028.298-.037.569-.06.811-.07.242-.01.424-.06.546-.154.26-.102.494-.251.699-.447a1.75 1.75 0 0 0 .447-.686c.056-.149.103-.335.14-.559.038-.224.066-.494.084-.811.019-.317.023-.564.014-.741a11.82 11.82 0 0 1 0-.826c.01-.373.01-.573 0-.601-.01-.028-.01-.228 0-.601s.01-.648 0-.826c-.01-.177-.014-.424-.014-.74 0-.318-.028-.588-.084-.812l-.14-.56a1.956 1.956 0 0 0-1.147-1.133 3.979 3.979 0 0 0-.545-.153 3.915 3.915 0 0 0-.811-.07c-.326 0-.578-.01-.755-.028a5.916 5.916 0 0 0-.826 0c-.372.019-.568.019-.587 0Zm3.706 2.225c.14-.14.21-.308.21-.504a.57.57 0 0 0-.21-.503.767.767 0 0 0-.517-.21.718.718 0 0 0-.504.21.622.622 0 0 0-.21.503c.01.196.08.364.21.504s.299.21.504.21c.205 0 .377-.07.517-.21ZM22.063 18c0 .849-.298 1.576-.895 2.182a2.882 2.882 0 0 1-2.168.895 3.075 3.075 0 0 1-2.182-.895c-.606-.588-.904-1.315-.895-2.182.01-.867.308-1.594.895-2.182.588-.587 1.315-.886 2.182-.895.867-.01 1.59.29 2.168.895.578.606.876 1.333.895 2.182Zm-1.077 0a1.95 1.95 0 0 0-.573-1.413A1.897 1.897 0 0 0 19 16c-.56 0-1.03.196-1.413.587A2.001 2.001 0 0 0 17 18c-.01.55.186 1.021.587 1.413.401.391.872.587 1.413.587.54 0 1.012-.196 1.413-.587.4-.392.592-.863.573-1.413Z"
+                        transform="translate(-1.5 -0.5)" fill="var(--fill)"></path>
+                </symbol>
+
+                <symbol id="ico-linkedin" viewBox="0 0 35 35">
+                    <circle opacity=".2" cx="17.5" cy="17.5" r="17" stroke="var(--fill)" fill="none"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M15.3025 14.0835C15.3025 14.3845 15.1934 14.6403 14.9752 14.851C14.757 15.0617 14.4786 15.167 14.14 15.167C13.8014 15.167 13.5267 15.0617 13.316 14.851C13.1053 14.6403 13 14.3807 13 14.0722C13 13.7637 13.1053 13.5079 13.316 13.3047C13.5267 13.1016 13.8051 13 14.1512 13C14.4974 13 14.772 13.1016 14.9752 13.3047C15.1783 13.5079 15.2874 13.7675 15.3025 14.0835ZM13.0677 23V16.0248H15.2348V23H13.0677ZM16.4763 16.0248C16.5064 16.8676 16.5214 17.6125 16.5214 18.2596V23H18.7111V18.9819C18.7111 18.7111 18.7336 18.5305 18.7788 18.4402C18.9895 17.8984 19.3582 17.6275 19.8849 17.6275C20.6223 17.6275 20.991 18.1317 20.991 19.14V23H23.158V18.8691C23.158 17.8758 22.9285 17.1272 22.4695 16.623C22.0105 16.1189 21.4048 15.8668 20.6524 15.8668C19.6742 15.8668 18.9594 16.243 18.5079 16.9955H18.4628L18.3499 16.0248H16.4763Z"
+                        transform="translate(0 -1)" fill="var(--fill)"></path>
+                </symbol>
+            </svg>
+
+            <div class="cursor"></div>
+            <div class="cursor cursor2"></div>
+        </section>
+
+        <section class="shadow-md py-32 px-4 text-center fade-in-section fade-in-right"
+            style="background: url('images/form-bg.jpeg') center center / cover no-repeat;">
+            <h3 class="text-[30px] text-white font-bold uppercase mb-2 rounded-lg">CONFIRMACIÓN DE ASISTENCIA</h3>
+            <!-- <p class="text-[20px] text-white mb-8 rounded-lg">Celebrar nuestro amor es un sueño hecho realidad, para que sea
+                perfecto nos encantaria contar contigo en nuestra lista de invitados, confirmanos tu asistencia hasta el
+                7 de Diciembre.</p> -->
+            <a id="confirm-link"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdzYqAzqrWByKhGqWvDdVOL_wMGO-vakRTb2x9b70at58e-nQ/viewform?usp=pp_url&entry.638610145="
+                target="_blank"
+                class="inline-block bg-black text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition duration-300 shadow-lg">
+                Confirmar asistencia
+            </a>
+        </section>
+
+    </div>
+    <script src="./carousel.js"></script>
+    <script>
+        // Animación de entrada para secciones al hacer scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('#main-content > section');
+            const observer = new window.IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        const countdownDate = new Date("Dec 20, 2025 00:00:00").getTime();
+
+        const x = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the respective elements
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<div class='text-[30px] font-bold'>¡El gran día ha llegado!</div>";
+            }
+        }, 1000);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener elementos
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const mainContent = document.getElementById('main-content');
+            const showBtn = document.getElementById('show-invitation-btn');
+            const welcomeMessageEl = document.getElementById('welcome-message');
+
+            // 1. Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            // Reemplaza '+' con espacios en el nombre del invitado
+            const guestName = (urlParams.get('guest') || 'Invitado(a)').replace(/\+/g, ' ');
+            const isIndividual = urlParams.get('inv') === '1'; // Asume '1' para individual, cualquier otra cosa (incluyendo null) es plural
+
+            // 2. Determinar el verbo
+            const verb = isIndividual ? 'seas' : 'sean';
+
+            const inv = urlParams.get('inv') || '';
+            const confirmLink = document.getElementById('confirm-link');
+            if (confirmLink) {
+
+                confirmLink.href = isIndividual ? `https://docs.google.com/forms/d/e/1FAIpQLScnuniT8d_FEfF7aF0Ps7Lynw470dEBxNgQl0Wwe0GIO2PnYg/viewform?usp=pp_url&entry.999632287=${encodeURIComponent(guestName)}` : `https://docs.google.com/forms/d/e/1FAIpQLSdzYqAzqrWByKhGqWvDdVOL_wMGO-vakRTb2x9b70at58e-nQ/viewform?usp=pp_url&entry.999632287=${encodeURIComponent(guestName)}&entry.638610145=${encodeURIComponent(inv)}`;
+            }
+
+            // 3. Crear y mostrar el mensaje
+            // Usamos textContent para insertar el texto de forma segura
+            welcomeMessageEl.textContent = `${guestName}, porque la felicidad es mas grande cuando se comparte, queremos que ${verb} parte de este cápitulo tan especial de nuestra historia.`;
+
+            // 4. Configurar el botón
+            showBtn.addEventListener('click', () => {
+                // Ocultar la pantalla de bienvenida
+                welcomeScreen.style.display = 'none';
+
+                // Mostrar el contenido principal
+                mainContent.classList.remove('hidden');
+
+                // Permitir scroll en la página
+                document.body.classList.remove('overflow-hidden');
+            });
+            const audio = document.getElementById('bg-audio');
+            if (audio) {
+                // Algunos navegadores requieren interacción del usuario para reproducir audio
+                audio.volume = 0.7;
+                audio.play().catch(() => {
+                    // Si el navegador bloquea la reproducción automática, la inicia al hacer clic en el botón
+                    const showBtn = document.getElementById('show-invitation-btn');
+                    if (showBtn) {
+                        showBtn.addEventListener('click', () => {
+                            audio.play();
+                        }, { once: true });
+                    }
+                });
+            }
+
+
+        });
+    </script>
+
+</body>
+
+</html>
